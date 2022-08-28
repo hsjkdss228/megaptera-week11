@@ -12,10 +12,14 @@
 //    - 입력값 처리를 위한 Dto 생성
 //
 // 3. AuthenticationService (Application Layer)
-//   : authenticate >> E-mail과 Password를 받아 잘 되면 토큰 발행,
+//    : authenticate >> E-mail과 Password를 받아 잘 되면 토큰 발행,
 //                     잘못되면 예외 발생 (LoginFailed)
 //
-// 4. JWT
+// 4. JWT (JSON Web Tokens)
+//    - 정보를 담고 있는 토큰 (claims)
+//    - 내가 발급한 게 맞는지 확인이 필요함 >> 암호학의 서명 기법 사용 (verify)
+//    - 정보를 encode >> Token 생성됨 / Token을 decode >> 객체 생성됨
+//
 // 5. 사용자 정보 관리
 
 package com.inu.user;

@@ -1,6 +1,7 @@
 package com.inu.user.services;
 
 import com.inu.user.exceptions.LoginFailed;
+import com.inu.user.utils.JwtUtil;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,8 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class AuthenticationServiceTest {
   @Test
   void authenticate() {
+    JwtUtil jwtUtil = new JwtUtil();
+
     AuthenticationService authenticationService
-         = new AuthenticationService();
+         = new AuthenticationService(jwtUtil);
 
     String token = authenticationService
         .authenticate("tester@example.com", "test");
