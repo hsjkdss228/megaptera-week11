@@ -11,7 +11,12 @@
 //    등등의 방법이 있음
 //    - 입력값 처리를 위한 Dto 생성
 //
-// 3. JWT
+// 3. AuthenticationService (Application Layer)
+//   : authenticate >> E-mail과 Password를 받아 잘 되면 토큰 발행,
+//                     잘못되면 예외 발생 (LoginFailed)
+//
+// 4. JWT
+// 5. 사용자 정보 관리
 
 package com.inu.user;
 
