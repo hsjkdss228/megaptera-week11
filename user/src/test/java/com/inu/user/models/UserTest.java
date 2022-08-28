@@ -1,16 +1,21 @@
 package com.inu.user.models;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class UserTest {
-
   @Test
   void authenticate() {
+    PasswordEncoder passwordEncoder = new Argon2PasswordEncoder();
+
     User user = new User();
 
-    assertThat(user.authenticate("test")).isTrue();
-    assertThat(user.authenticate("asdfgadsjkb")).isFalse();
+    user.changePassword(passwordEncoder, "test");
+
+    assertThat(user.authenticate(passwordEncoder, "test")).isTrue();
+    assertThat(user.authenticate(passwordEncoder, "asdfgadsjkb")).isFalse();
   }
 }

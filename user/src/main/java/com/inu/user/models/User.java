@@ -1,9 +1,10 @@
 package com.inu.user.models;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Objects;
 
 @Entity
 public class User {
@@ -13,7 +14,7 @@ public class User {
 
   private String email;
 
-  // TODO: 암호화된 Password를 받아야 함
+  private String password;
 
   public User() {
 
@@ -24,7 +25,15 @@ public class User {
     this.email = email;
   }
 
-  public boolean authenticate(String password) {
-    return Objects.equals(password, "test");
+  public boolean authenticate(PasswordEncoder passwordEncoder,
+                              String password) {
+    return passwordEncoder.matches(password, this.password);
+
+//    return Objects.equals(this.password, passwordEncoder.encode(password));
+  }
+
+  public void changePassword(PasswordEncoder passwordEncoder,
+                             String password) {
+    this.password = passwordEncoder.encode(password);
   }
 }
