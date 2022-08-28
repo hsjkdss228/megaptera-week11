@@ -1,5 +1,15 @@
 package com.inu.user.exceptions;
 
-public class LoginFailed extends RuntimeException {
+import javax.persistence.EntityNotFoundException;
 
+public class LoginFailed extends RuntimeException {
+  private final RuntimeException exception;
+
+  public LoginFailed() {
+    this.exception = null;
+  }
+
+  public LoginFailed(EntityNotFoundException exception) {
+    this.exception = exception;
+  }
 }

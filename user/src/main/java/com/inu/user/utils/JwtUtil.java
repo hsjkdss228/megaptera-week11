@@ -4,14 +4,14 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class JwtUtil {
-  private final String secret = "secret";
   private final Algorithm algorithm;
 
-  public JwtUtil() {
+  public JwtUtil(@Value("${jwt.secret}") String secret) {
     algorithm = Algorithm.HMAC256(secret);
   }
 
