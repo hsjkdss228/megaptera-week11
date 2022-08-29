@@ -1,16 +1,21 @@
 package com.inu.user.models;
 
+import com.inu.user.dtos.UserCreatedDto;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "PERSON")
 public class User {
   @Id
   @GeneratedValue
   private Long id;
+
+  private String name;
 
   private String email;
 
@@ -20,8 +25,9 @@ public class User {
 
   }
 
-  public User(Long id, String email) {
+  public User(Long id, String name, String email) {
     this.id = id;
+    this.name = name;
     this.email = email;
   }
 
@@ -35,5 +41,9 @@ public class User {
   public void changePassword(PasswordEncoder passwordEncoder,
                              String password) {
     this.password = passwordEncoder.encode(password);
+  }
+
+  public UserCreatedDto toCreatedDto() {
+    return new UserCreatedDto(id, name, email);
   }
 }

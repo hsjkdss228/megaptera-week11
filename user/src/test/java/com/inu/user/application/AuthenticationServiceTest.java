@@ -1,4 +1,4 @@
-package com.inu.user.services;
+package com.inu.user.application;
 
 import com.inu.user.exceptions.LoginFailed;
 import com.inu.user.models.User;
@@ -7,8 +7,6 @@ import com.inu.user.utils.JwtUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import javax.persistence.EntityNotFoundException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -27,12 +25,6 @@ class AuthenticationServiceTest {
 
     given(userRepository.getByEmail("tester@example.com"))
         .willReturn(user);
-    given(userRepository.getByEmail(null))
-        .willThrow(new EntityNotFoundException());
-    given(userRepository.getByEmail(""))
-        .willThrow(new EntityNotFoundException());
-    given(userRepository.getByEmail("asdfasdasd@adsfhad.abert"))
-        .willThrow(new EntityNotFoundException());
 
     JwtUtil jwtUtil = new JwtUtil("MySecret");
 

@@ -2,7 +2,7 @@ package com.inu.user.controllers;
 
 import com.inu.user.models.User;
 import com.inu.user.repositories.UserRepository;
-import com.inu.user.services.AuthenticationService;
+import com.inu.user.application.AuthenticationService;
 import com.inu.user.utils.JwtUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -13,7 +13,9 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     // TODO: 우리가 원하는 것만 추가!
     http
-        .csrf().disable();
+        .csrf().disable()
+        // H2 Console을 쓰기 위해 Frame Options를 비활성화
+        .headers().frameOptions().disable();
   }
 
   @Bean

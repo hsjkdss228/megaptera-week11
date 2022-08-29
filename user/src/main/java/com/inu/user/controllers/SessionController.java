@@ -2,7 +2,7 @@ package com.inu.user.controllers;
 
 import com.inu.user.dtos.LoginDto;
 import com.inu.user.exceptions.LoginFailed;
-import com.inu.user.services.AuthenticationService;
+import com.inu.user.application.AuthenticationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
